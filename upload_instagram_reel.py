@@ -146,6 +146,20 @@ def main():
     video_folder_name = "lovepoetry304"
     thumbnail_folder_name = "thumbnail"
 
+    # --- Love Captions List ---
+    love_captions = [
+        "You're my favorite reason to lose sleep. ❤️",
+        "Every love story is beautiful, but ours is my favorite. 💖",
+        "Falling in love with you was the best decision I ever made. 🥰",
+        "You make my heart smile. 😊",
+        "My only wish is to have been with you sooner, and to never leave your side. 🌟",
+        "In a sea of people, my eyes always search for you. 👀",
+        "With you, every moment is a precious memory. ✨",
+        "You're the missing piece I've been searching for. 🧩",
+        "My favorite place is inside your hug. 🤗",
+        "You're not just my special one; you're my every everything. 💘"
+    ]
+
     # Fetch resources from Cloudinary
     video_urls = get_resources_from_cloudinary_folder(video_folder_name, "video")
     thumbnail_urls = get_resources_from_cloudinary_folder(thumbnail_folder_name, "image")
@@ -167,8 +181,9 @@ def main():
     else:
         print(f"Warning: No thumbnails found in '{thumbnail_folder_name}'. Video will be posted without a custom thumbnail.")
 
-    # Customize Instagram caption for video
-    instagram_video_caption = f"Here's your daily dose of inspiration! ✨ #quotes #motivation #inspiration #dailyquotes #randomvideo #reels"
+    # Select a random love caption
+    instagram_video_caption = random.choice(love_captions)
+    print(f"--- Selected caption: {instagram_video_caption} ---")
 
     # Upload video to Instagram
     instagram_video_success = upload_video_to_instagram(selected_video_url, instagram_video_caption, selected_thumbnail_url)
