@@ -160,6 +160,18 @@ def main():
         "You're not just my special one; you're my every everything. 💘"
     ]
 
+    # --- Hashtags List (newly added) ---
+    # Here are sets of relevant hashtags. You can add more sets or combine them.
+    # Aim for a mix of popular, niche, and trending hashtags.
+    hashtags_sets = [
+        "#Love #CoupleGoals #RelationshipGoals #ForeverYours #MyHeart #Soulmate #LoveStory #Romantic #SpecialOne #TogetherForever",
+        "#TrueLove #InLove #LoveOfMyLife #YouAndMe #DeepLove #AlwaysAndForever #PureLove #MyEverything #LoveVibes #Heartfelt",
+        "#RomanticVideos #LoveReels #CoupleVideos #RelationshipGoals #Inspiration #LoveQuotes #DailyLove #Feelings #SweetMoments #MyLove",
+        "#LoveHim #LoveHer #MyBoo #PartnerInCrime #AdoreYou #ForeverMine #BlessedWithLove #CutestCouple #RelationshipGoals #HappyCouple",
+        "#EternalLove #BeyondWords #LoveYouForever #CherishedMoments #Heartbeat #MyHappiness #UnconditionalLove #PerfectMatch #DreamComeTrue #SimplyLove"
+    ]
+
+
     # Fetch resources from Cloudinary
     video_urls = get_resources_from_cloudinary_folder(video_folder_name, "video")
     thumbnail_urls = get_resources_from_cloudinary_folder(thumbnail_folder_name, "image")
@@ -182,11 +194,18 @@ def main():
         print(f"Warning: No thumbnails found in '{thumbnail_folder_name}'. Video will be posted without a custom thumbnail.")
 
     # Select a random love caption
-    instagram_video_caption = random.choice(love_captions)
-    print(f"--- Selected caption: {instagram_video_caption} ---")
+    selected_caption = random.choice(love_captions)
+    print(f"--- Selected caption: {selected_caption} ---")
+
+    # Select a random set of hashtags
+    selected_hashtags = random.choice(hashtags_sets)
+    print(f"--- Selected hashtags: {selected_hashtags} ---")
+
+    # Combine caption and hashtags
+    final_instagram_caption = f"{selected_caption}\n\n{selected_hashtags}"
 
     # Upload video to Instagram
-    instagram_video_success = upload_video_to_instagram(selected_video_url, instagram_video_caption, selected_thumbnail_url)
+    instagram_video_success = upload_video_to_instagram(selected_video_url, final_instagram_caption, selected_thumbnail_url)
     if instagram_video_success:
         print(f"\nRandom video upload process to Instagram completed successfully!")
     else:
